@@ -24,3 +24,5 @@ Feature: Create articles
     
     Scenario: Publisher doesn't enter any content for the article [Sad Path]
         When I fill in "Title" with "Content can't be blank"
+        And I click "Create Article" button
+        Then I should see "Text can't be blank"
