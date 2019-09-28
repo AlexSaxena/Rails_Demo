@@ -17,4 +17,4 @@ Feature: login to the application
 				And I fill in "Email" with "trott@mail.com"
 				And I fill in "Password" with "12345678"
 				And I click "Log in" button
-				And I should see ""
+				Then I should see "Signed in successfully."
