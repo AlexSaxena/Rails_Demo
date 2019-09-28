@@ -4,12 +4,18 @@ Feature: Create articles
     I would like to be able to create articles
 
     Background:
-        Given I visit the "landing" page
+        Given following user exist
+					|email|password|
+					|trott@mail.com|12345678|
+				And I visit the "landing" page
         And I click "Articles" link
-        When I click "New Article" link
+				And I fill in "Email" with "trott@mail.com"
+				And I fill in "Password" with "12345678"
+				And I click "Log in" button
 
-    Scenario: Successfully create an article [Happy Path]
-        When I fill in "Title" with "Learning Rails 5"
+    Scenario: Successfully Create an article [Happy Path]
+        When I click "New Article" link
+				And I fill in "Title" with "Learning Rails 5"
         And I fill in "Text" with "Excited about learning a new framework"
         And I click "Create Article" button
         Then I should be on "Learning Rails 5" page
@@ -18,11 +24,13 @@ Feature: Create articles
         And I should see "Excited about learning a new framework"
 
     Scenario: Publisher doesn't enter a title for the article [Sad Path]
-        When I fill in "Text" with "Excited about learning a new framework"
+				When I click "New Article" link 
+				And I fill in "Text" with "Excited about learning a new framework"
         And I click "Create Article" button
         Then I should see "Title can't be blank"
     
     Scenario: Publisher doesn't enter any content for the article [Sad Path]
-        When I fill in "Title" with "Content can't be blank"
+	      When I click "New Article" link
+        And I fill in "Title" with "Content can't be blank"
         And I click "Create Article" button
         Then I should see "Text can't be blank"

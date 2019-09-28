@@ -28,3 +28,9 @@ Then("I should be on {string} page") do |string|
   article = Article.find_by(title: string)
   expect(current_path).to eq article_path(article)
 end
+
+Given("following user exist") do |table|
+  table.hashes.each do |hash|
+    User.create!(hash)
+  end
+end
