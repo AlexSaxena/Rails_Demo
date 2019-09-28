@@ -13,7 +13,7 @@ Feature: Create articles
 				And I fill in "Password" with "12345678"
 				And I click "Log in" button
 
-    Scenario: Successfully sign in and create an article [Happy Path]
+    Scenario: Successfully Create an article [Happy Path]
         When I click "New Article" link
 				And I fill in "Title" with "Learning Rails 5"
         And I fill in "Text" with "Excited about learning a new framework"
